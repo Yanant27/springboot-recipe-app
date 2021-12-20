@@ -1,4 +1,4 @@
-package hyk.springframework.springbootrecipeapp.model;
+package hyk.springframework.springbootrecipeapp.models;
 
 import javax.persistence.*;
 

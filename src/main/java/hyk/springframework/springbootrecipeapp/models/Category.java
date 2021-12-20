@@ -1,6 +1,7 @@
-package hyk.springframework.springbootrecipeapp.model;
+package hyk.springframework.springbootrecipeapp.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -15,7 +16,7 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories") // Inverse/ referencing side
-    private Set<Recipe> recipes;
+    private Set<Recipe> recipes = new HashSet<>();
 
     public Long getId() {
         return id;

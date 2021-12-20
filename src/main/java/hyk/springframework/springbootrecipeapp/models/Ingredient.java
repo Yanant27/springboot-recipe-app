@@ -1,7 +1,8 @@
-package hyk.springframework.springbootrecipeapp.model;
+package hyk.springframework.springbootrecipeapp.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 /**
  * @author Htoo Yanant Khin
@@ -21,6 +22,13 @@ public class Ingredient {
     // default of @OneToOne is EAGER. Just show how to set FetchType
     @OneToOne(fetch = FetchType.EAGER)
     private UnitOfMeasure uom;
+
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure uom, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.uom = uom;
+        this.recipe = recipe;
+    }
 
     public Long getId() {
         return id;

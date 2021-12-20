@@ -1,6 +1,7 @@
-package hyk.springframework.springbootrecipeapp.model;
+package hyk.springframework.springbootrecipeapp.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,6 +18,8 @@ public class Recipe {
     private Integer serving;
     private Integer source;
     private String  url;
+
+    @Lob
     private String direction;
 
     @Lob
@@ -26,7 +29,7 @@ public class Recipe {
     private Notes note;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe") // Inverse/ referencing side
-    Set<Ingredient> ingredients;
+    Set<Ingredient> ingredients = new HashSet<>();
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
@@ -35,7 +38,7 @@ public class Recipe {
     @JoinTable(name = "recipe_category",
             joinColumns = @JoinColumn(name = "recipe_id"), // Owner side
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -131,5 +134,13 @@ public class Recipe {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }
