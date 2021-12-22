@@ -4,6 +4,8 @@ import hyk.springframework.springbootrecipeapp.models.*;
 import hyk.springframework.springbootrecipeapp.repositories.CategoryRepository;
 import hyk.springframework.springbootrecipeapp.repositories.RecipeRepository;
 import hyk.springframework.springbootrecipeapp.repositories.UnitOfMeasureRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -13,17 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
+@RequiredArgsConstructor
 @Component
 public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     private final CategoryRepository categoryRepository;
     private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
-
-    public DataLoader(CategoryRepository categoryRepository, RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
-        this.categoryRepository = categoryRepository;
-        this.recipeRepository = recipeRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
-    }
 
     /**
      * This method will be invoked when the application is started..
@@ -32,7 +30,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
-        System.out.println("Loaded recipes ...");
+        log.debug("Loaded recipes ...");
     }
 
     private List<Recipe> getRecipes() {
@@ -153,6 +151,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         // Add tacosRecipe to return list
         recipes.add(tacosRecipe);
+
         return recipes;
     }
 
