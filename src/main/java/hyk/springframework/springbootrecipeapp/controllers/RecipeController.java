@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Slf4j
 @Controller
-public class IndexController {
+public class RecipeController {
     private final RecipeService recipeService;
 
-    public IndexController(RecipeService recipeService) {
+    public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
 
-    @RequestMapping({"", "/", "/index"})
-    public String getIndexPage(Model model) {
-        model.addAttribute("recipes", recipeService.getRecipes());
-        log.debug("Get index page ...");
-        return "index";
+    @RequestMapping("/recipe/show/{id}")
+    public String findById(@PathVariable Long id, Model model) {
+        model.addAttribute("recipe", recipeService.findById(id));
+        log.debug("Get show page ...");
+        return "recipe/show";
     }
 }
