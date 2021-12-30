@@ -11,7 +11,7 @@ import java.util.Optional;
  * @author Htoo Yanant Khin
  */
 @Data
-//@EqualsAndHashCode(exclude = {"recipe"})
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
     @Id
