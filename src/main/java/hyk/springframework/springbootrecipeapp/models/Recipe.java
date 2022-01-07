@@ -34,7 +34,7 @@ public class Recipe {
     private Notes note;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe") // Inverse/ referencing side
-    Set<Ingredient> ingredients = new HashSet<>();
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     @Enumerated(value = EnumType.STRING)
     private Difficulty difficulty;
@@ -46,8 +46,10 @@ public class Recipe {
     private Set<Category> categories = new HashSet<>();
 
     public void setNote(Notes note) {
-        this.note = note;
-        note.setRecipe(this);
+        if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
     public Recipe addIngredient(Ingredient ingredient) {
