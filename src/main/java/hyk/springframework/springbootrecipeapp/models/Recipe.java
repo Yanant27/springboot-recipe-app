@@ -46,9 +46,9 @@ public class Recipe {
     private Set<Category> categories = new HashSet<>();
 
     public void setNote(Notes note) {
-        if (notes != null) {
-            this.notes = notes;
-            notes.setRecipe(this);
+        if (note != null) {
+            this.note = note;
+            note.setRecipe(this);
         }
     }
 
