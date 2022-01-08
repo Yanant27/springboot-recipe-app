@@ -17,7 +17,7 @@
             crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<!--/*@thymesVar id="recipe" type="hyk.springframework.models.Recipe"*/-->
+<!--/*@thymesVar id="recipe" type="hyk.springframework.springbootrecipeapp.models.Recipe"*/-->
 <div class="container-fluid" style="margin-top: 20px">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -96,6 +96,7 @@
                                 </div>
                                 <div class="col-md-1">
                                     <a class="btn btn-default" href="#" role="button">Edit</a>
+                                    <a class="btn btn-default" href="#" role="button">View</a>
                                 </div>
                             </div>
                         </div>
@@ -105,10 +106,11 @@
                                     <ul>
                                         <li th:remove="all">1 Cup of milk</li>
                                         <li th:remove="all">1 Teaspoon of chocolate</li>
+                                        <li th:remove="all">asdf</li>
                                         <li th:each="ingredient : ${recipe.ingredients}"
                                             th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.unitOfMeasure.getDescription() +
-                                        ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
+                                            ' ' + ingredient.unitOfMeasure.getDescription() +
+                                            ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                         </li>
                                     </ul>
                                 </div>
