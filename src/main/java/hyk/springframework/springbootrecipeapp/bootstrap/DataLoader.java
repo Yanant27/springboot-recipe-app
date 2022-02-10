@@ -39,7 +39,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         //Get UOM
         UnitOfMeasure eachUom = getUOM("Each");
         UnitOfMeasure tableSpoonUom = getUOM("Tablespoon");
-        UnitOfMeasure teapoonUom = getUOM("Teaspoon");
+        UnitOfMeasure teaspoonUom = getUOM("Teaspoon");
         UnitOfMeasure dashUom = getUOM("Dash");
         UnitOfMeasure pintUom = getUOM("Pint");
         UnitOfMeasure cupsUom = getUOM("Cup");
@@ -81,7 +81,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         // Add ingredient to guacRecipe
         guacRecipe.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
-        guacRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(".5"), teapoonUom));
+        guacRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(".5"), teaspoonUom));
         guacRecipe.addIngredient(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tableSpoonUom));
         guacRecipe.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoonUom));
         guacRecipe.addIngredient(new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), eachUom));
@@ -131,10 +131,10 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         // Add ingredient to tacosRecipe
         tacosRecipe.addIngredient(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom));
-        tacosRecipe.addIngredient(new Ingredient("Dried Oregano", new BigDecimal(1), teapoonUom));
-        tacosRecipe.addIngredient(new Ingredient("Dried Cumin", new BigDecimal(1), teapoonUom));
-        tacosRecipe.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teapoonUom));
-        tacosRecipe.addIngredient(new Ingredient("Salt", new BigDecimal(".5"), teapoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Dried Oregano", new BigDecimal(1), teaspoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Dried Cumin", new BigDecimal(1), teaspoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teaspoonUom));
+        tacosRecipe.addIngredient(new Ingredient("Salt", new BigDecimal(".5"), teaspoonUom));
         tacosRecipe.addIngredient(new Ingredient("Clove of Garlic, Choppedr", new BigDecimal(1), eachUom));
         tacosRecipe.addIngredient(new Ingredient("finely grated orange zestr", new BigDecimal(1), tableSpoonUom));
         tacosRecipe.addIngredient(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom));
@@ -163,7 +163,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     /**
      * Check expected UOM is available or not.
      * @param description UOM name
-     * @return instance of UnitOfMeasure
+     * @return instance of UnitOfMeasureService
      */
     private UnitOfMeasure getUOM(String description) {
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByDescription(description);

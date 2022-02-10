@@ -8,11 +8,8 @@ import lombok.Setter;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * @author Htoo Yanant Khin
- */
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 public class RecipeCommand {
     private Long id;
@@ -21,9 +18,10 @@ public class RecipeCommand {
     private Integer cookTime;
     private Integer serving;
     private String source;
-    private String  url;
+    private String url;
     private String direction;
     private Set<IngredientCommand> ingredients = new HashSet<>();
+    private Byte[] image;
     private Difficulty difficulty;
     private NotesCommand note;
     private Set<CategoryCommand> categories = new HashSet<>();

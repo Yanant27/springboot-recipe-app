@@ -6,14 +6,12 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 
-/**
- * @author Htoo Yanant Khin
- */
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 public class IngredientCommand {
     private Long id;
+    private Long recipeId;
     private String description;
     private BigDecimal amount;
     private UnitOfMeasureCommand unitOfMeasure;

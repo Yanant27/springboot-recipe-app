@@ -3,6 +3,7 @@ package hyk.springframework.springbootrecipeapp.services;
 import hyk.springframework.springbootrecipeapp.commands.RecipeCommand;
 import hyk.springframework.springbootrecipeapp.converters.RecipeCommandToRecipe;
 import hyk.springframework.springbootrecipeapp.converters.RecipeToRecipeCommand;
+import hyk.springframework.springbootrecipeapp.exceptions.NotFoundException;
 import hyk.springframework.springbootrecipeapp.models.Recipe;
 import hyk.springframework.springbootrecipeapp.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -40,7 +41,7 @@ public class RecipeServiceImpl implements RecipeService {
     public Recipe findById(Long id) {
         Optional<Recipe> recipe = recipeRepository.findById(id);
         if (!recipe.isPresent()) {
-            throw new RuntimeException("Recipe not found !");
+            throw new NotFoundException("Recipe not found !");
         }
         return recipe.get();
     }
