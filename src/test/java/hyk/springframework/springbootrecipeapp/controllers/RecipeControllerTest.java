@@ -1,5 +1,6 @@
 package hyk.springframework.springbootrecipeapp.controllers;
 
+import hyk.springframework.springbootrecipeapp.exceptions.ControllerExceptionHandler;
 import hyk.springframework.springbootrecipeapp.exceptions.NotFoundException;
 import hyk.springframework.springbootrecipeapp.models.Recipe;
 import hyk.springframework.springbootrecipeapp.services.RecipeService;
@@ -30,7 +31,9 @@ class RecipeControllerTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
         recipeController = new RecipeController(recipeService);
-        mockMvc = MockMvcBuilders.standaloneSetup(recipeController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(recipeController)
+                .setControllerAdvice(new ControllerExceptionHandler())
+                .build();
     }
 
     @Test

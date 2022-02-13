@@ -4,7 +4,6 @@ import hyk.springframework.springbootrecipeapp.commands.RecipeCommand;
 import hyk.springframework.springbootrecipeapp.exceptions.NotFoundException;
 import hyk.springframework.springbootrecipeapp.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,17 +63,6 @@ public class RecipeController {
         log.error(exception.getMessage());
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("error/404error");
-        modelAndView.addObject("exception", exception);
-        return modelAndView;
-    }
-
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(NumberFormatException.class)
-    public ModelAndView handleBadRequest(Exception exception) {
-        log.error("Handling NumberFormatException");
-        log.error(exception.getMessage());
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("error/400badrequest");
         modelAndView.addObject("exception", exception);
         return modelAndView;
     }
