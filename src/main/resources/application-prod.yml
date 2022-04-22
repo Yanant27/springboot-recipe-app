@@ -1,0 +1,16 @@
+# This will only be run when "prod" profile is active
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/recipe_prod
+    username: recipe_prod_user
+    password: yanant27
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: false # In real-world prod environment, show-sql is always false.
+  sql:
+    init:
+      platform: mysql
+

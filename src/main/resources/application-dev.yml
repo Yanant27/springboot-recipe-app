@@ -1,0 +1,28 @@
+# This will only be run when "dev" profile is active
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/recipe_dev
+    username: recipe_dev_user
+    password: yanant27
+  jpa:
+    hibernate:
+      # Hibernate will execute data.sql for "create" or "create-drop"
+#      ddl-auto: create
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: mysql
+    show-sql: true
+    properties:
+      javax:
+        persistence:
+          schema-generation:
+            scripts:
+              action: create
+              create-target: database_create.sql # Generate database schema definition
+              create-source: metadata
+#    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always # instead of spring.datasource.initialization-mode=always (deprecated)
+      data-locations: classpath:data.sql
+      platform: mysql # instead of spring.datasource.platform=h2
